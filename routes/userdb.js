@@ -31,7 +31,9 @@ function find(table, res) {
     return data;
 }
 
-function insert(table, data) {
+function get(table, username) {
+
+    var data = null;
     var  mongodb = require('mongodb');
     var  server  = new mongodb.Server('localhost', 27017, {auto_reconnect:true});
     var  db = new mongodb.Db('test', server, {safe:true});
@@ -40,16 +42,25 @@ function insert(table, data) {
             console.log("connect db successfully!");
             db.createCollection(table, {safe:true}, function(err, collection){
                 if(err) {
-                    console.log(err);
+                    data = err;
                 } else {
-                    collection.insert(data, {safe:true}, function(err, result){
-                        console.log(result);
+                    collection.find({"username":username}).toArray(function(err, docs){
+                        console.log("hellow");
+                        console.log(docs);
+                        console.log("hellow");
+                        if(err ) {
+                            return false;
+                        }
+                        return true;
+
                     });
                 }
             });
         }
     });
+
+    return data;
 }
 
 exports.find = find;
-exports.insert = insert;
+exports.get = get;

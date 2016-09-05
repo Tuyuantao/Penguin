@@ -40,9 +40,9 @@
     </table>
   </body>
 
-  <div id=login style="display:none; POSITION:absolute; left:50%; top:50%; width:400px; height:200px; margin-left:-300px; margin-top:-200px; border:1px solid #888; background-color:white; text-align:center">
+  <div id=login style="display:block; POSITION:absolute; left:50%; top:50%; width:400px; height:200px; margin-left:-300px; margin-top:-200px; border:1px solid #888; background-color:white; text-align:center">
     <p>User Login</p>
-    <form method="post" action="./login">
+    <form method="post" action="/login">
       <table style="margin-left:70px; margin-bottom:50px">
         <tr>
           <td>username:</td>
@@ -67,5 +67,5 @@
       document.getElementById("login").style.display="none";
     }
   </script>
-  <a href="javascript:window.open('/login');">打开登录框</a>
+  <a href="javascript:openLogin();">打开登录框</a>
 </html>
